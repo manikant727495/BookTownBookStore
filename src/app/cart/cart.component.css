@@ -1,0 +1,13 @@
+.cart{
+    margin-left:40%;
+
+}
+h1{
+    width:180px;
+    background:blue;
+    color:white;
+    margin-top:5px;
+    padding:5px;
+    font-style:italic;
+    border-radius: 6px;
+}

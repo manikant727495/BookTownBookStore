@@ -1,0 +1,31 @@
+<div class='cart'>
+  <h1 >your cart</h1>
+</div>
+<div class='table-responsive'>
+  <table class='table'
+       *ngIf ='books' >
+    <thead>
+      <tr>
+        <th></th>
+        <th>Book Name</th>
+        <th>Author Name</th>
+        <th>Price</th>
+        <th>5 Star Rating</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor='let book of books'>
+        <td><img  [src]='book.ImageUrl'
+                  [title]='book.ImageUrl'
+                  [style.width.px]='imageWidth'
+                  [style.margin.px]='imageMargin'>
+                </td>
+        <td><h5>{{ book.book_name }}</h5></td>
+        <td>{{ book.author_name |lowercase }}</td>
+        <td>{{ book.price | currency:"&#8377;": 'symbol' :'1.2-2' }}</td>
+        <td>{{ book.starRating }}</td>
+        <td><button class="btn btn-primary" (click) = onDelete(book) >Delete</button></td>
+    </tbody>
+  </table>
+</div>

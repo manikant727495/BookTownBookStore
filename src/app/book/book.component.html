@@ -1,0 +1,65 @@
+<div class='card'>
+  <div class='card-body'>
+    <div class="input-group mb-3 ">
+      <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+      <input type="text" placeholder="Enter Book Name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]= 'listFilter'/>
+    </div>
+
+  <!-- <div class='row'>
+      <div class='col-md-2'>SEARCH YOUR BOOK Here:</div>
+      <div class='col-md-4'>
+        <input type='text' placeholder="Enter book Name"
+        [(ngModel)]= 'listFilter'/>
+      </div>
+    </div>-->
+    <div class='row'>
+    </div>
+    <div class='table-responsive'>
+      <table class='table'
+           *ngIf ='books' >
+        <thead>
+          <tr>
+            <th>
+              <button (click) ='toggleImage()' class='btn btn-primary'>
+                {{showImage? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor='let book of filteredBook'>
+            <td><img *ngIf = 'showImage' [src]='book.ImageUrl'
+                      [title]='book.ImageUrl'
+                      [style.width.px]='imageWidth'
+                      [style.margin.px]='imageMargin'>
+                    </td>
+            <td><h5>{{ book.book_name |uppercase }}</h5></td>
+            <td>{{ book.author_name |lowercase }}</td>
+            <td>{{ book.price | currency:"&#8377;": 'symbol' :'1.2-2' }}</td>
+            <td>{{ book.starRating }}</td>
+            <td> <button class="btn btn-primary" (click)= addtocart(book)> Add to cart</button>  </td>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+<!--
+<div *ngFor='let book of filteredBook'>
+<div class="card mx-2 " style="width: 18rem;float: left;" >
+  <img [src]='book.ImageUrl' class="card-img-top"style="height:195px;" [title]='book.ImageUrl'>
+  <div class="card-body">
+    <h5 class="card-title">{{ book.book_name }}</h5>
+    <p class="card-text">By:{{ book.author_name |lowercase }}</p>
+    <h5 class="card-title">{{ book.price | currency:"&#8377;": 'symbol' :'1.2-2' }}</h5>
+    <a href="#" class="btn btn-primary">Add To Cart</a>
+  </div>
+</div>
+</div>
+-->
