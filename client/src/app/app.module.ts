@@ -11,6 +11,7 @@ import { BookComponent } from './book/book.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { CartComponent } from './cart/cart.component';
 import {CartService} from './shared/cart.service';
+import { AddBookComponent } from './add-book/add-book.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {CartService} from './shared/cart.service';
     HomepageComponent,
     BookComponent,
     BookDetailComponent,
-    CartComponent
+    CartComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

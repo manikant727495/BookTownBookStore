@@ -22,10 +22,9 @@ export class BookService {
     return this.http.get<Book[]>('http://localhost:3000/api/books');
 
   }
-  getBook(id: string):Observable<Book>
+  getBookById(id: string):Observable<Book>
   {
-    console.log(id);
-    console.log(this.http.get<Book>('http://localhost:3000/api/books/'+ id));
+   // console.log(id);
     return this.http.get<Book>('http://localhost:3000/api/books/'+ id);
 
   }
