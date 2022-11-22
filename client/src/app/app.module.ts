@@ -12,6 +12,7 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { CartComponent } from './cart/cart.component';
 import {CartService} from './shared/cart.service';
 import { AddBookComponent } from './add-book/add-book.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AddBookComponent } from './add-book/add-book.component';
     BookComponent,
     BookDetailComponent,
     CartComponent,
-    AddBookComponent
+    AddBookComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,6 @@ export class CartService {
   constructor() { }
   setbookcart(data:Book){
     this.books.push(data);
-    console.log(this.books);
   }
 
   getbookcart(){

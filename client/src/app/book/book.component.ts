@@ -27,37 +27,41 @@ export class BookComponent implements OnInit {
 
   set listFilter(value: string) {
     this._listFilter = value;
-    console.log('In setter:', value);
     this.filteredBook= this.performFilter(value);
-    console.log(this.filteredBook);
   }
 
-  constructor(private bookService: BookService, private cartService:CartService) {
-  }
+  constructor(
+    private bookService: BookService,
+    private cartService:CartService,
+    ) {
+    }
 
   ngOnInit(): void {
     this.bookService.getBookss()
-    .subscribe((books: Book[]) =>
-      {this.books = books;
-      this.filteredBook=this.books;}
-    )
-
+    .subscribe((books: Book[]) =>{
+      this.books = books;
+      this.filteredBook=this.books;
+    })
   }
 
   performFilter(filterBy: string): Book[] {
     filterBy = filterBy.toLocaleLowerCase();
-    console.log(filterBy);
-    console.log(this.books);
     return this.books.filter((book: Book) =>
       book.book_name.toLocaleLowerCase().includes(filterBy));
-
   }
 
   toggleImage():void{
     this.showImage = !this.showImage;
   }
-   addtocart(book:Book){
-     this.cartService.setbookcart(book);
-   }
 
+  addtocart(book:Book){
+    this.cartService.setbookcart(book);
+  }
+
+  deleteBook(book:any){
+    this.bookService.deleteBook(book._id)
+    .subscribe((data)=>{
+      location.reload();
+    });
+  }
 }

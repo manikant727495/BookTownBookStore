@@ -1,0 +1,29 @@
+<div class="container">
+    <form #addBookForm="ngForm" (ngSubmit)="updateBook(addBookForm.value)" class="form-horizontal">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Book Name</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Book Name" name="book_name" [(ngModel)] = "book.book_name">
+      </div>
+      <div class="form-group">
+        <label for="inputAuthor" class="col-lg-3 control-label">Author</label>
+          <input type="text" class="form-control" id="inputAuthor" placeholder="Author" name="author_name" [(ngModel)] = "book.author_name"/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [(ngModel)] = "book.description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="inputYear" class="col-lg-3 control-label">Price</label>
+          <input type="text" class="form-control" id="inputYear" placeholder="Price" name="price" [(ngModel)] = "book.price"/>
+      </div>
+      <div class="form-group">
+        <label for="inputYear" class="col-lg-3 control-label">Rating</label>
+          <input type="text" class="form-control" id="inputRating" placeholder="Rating" name="starRating" [(ngModel)] = "book.starRating"/>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-8 col-lg-offset-3">
+          <button type="submit" class="btn btn-primary my-3">update</button>
+        </div>
+      </div>
+    </form>
+  </div>
