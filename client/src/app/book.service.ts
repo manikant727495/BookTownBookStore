@@ -1,12 +1,8 @@
-
 import { Injectable } from '@angular/core';
-
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
 import { Book } from './Book';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
-
 
 
 @Injectable({
@@ -26,7 +22,6 @@ export class BookService {
   {
    // console.log(id);
     return this.http.get<Book>('http://localhost:3000/api/books/'+ id);
-
   }
 
 
@@ -34,13 +29,19 @@ export class BookService {
   {
     var headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/api/book',newBook)
-    .pipe(map((response: any) => response.json()));
+    return this.http.post<any>('http://localhost:3000/api/book',newBook);
   }
 
   deleteBook(id: string)
   {
-    return this.http.delete('http://localhost:3000/api/book'+id)
-    .pipe(map((response: any) => response.json()));
+    return this.http.delete<any>('http://localhost:3000/api/book/'+id);
+  }
+
+  updateBook(id:string, newBook:any){
+    console.log(id);
+    var headers = new Headers();
+    headers.append('Content-Type','application/json');
+    var url = 'http://localhost:3000/api/books/update/'+id;
+    return this.http.put<any>(url, newBook);
   }
 }

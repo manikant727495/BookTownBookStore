@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../Book';
 import {BookService} from '../book.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-book',
@@ -14,21 +15,20 @@ export class AddBookComponent implements OnInit {
   price!:string ;
   starRating!:string ;
 
-  constructor(private bookService: BookService) { }
-
+  constructor(private bookService: BookService,
+              private location: Location
+              ) { }
 
   ngOnInit(): void {
-
   }
 
   saveBook(formValues: any): void {
     let newBook: Book = <Book>formValues;
     newBook._id = '0';
-    console.log(newBook);
 
     this.bookService.addBook(newBook)
       .subscribe(
-        (data: Book) => console.log(data),
+        (data: Book) => this.location.back(),
         (err: any) => console.log(err)
       );
   }

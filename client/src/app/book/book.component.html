@@ -4,7 +4,6 @@
       <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
       <input type="text" placeholder="Enter Book Name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]= 'listFilter'/>
     </div>
-
     <div class='row'>
     </div>
     <div class='table-responsive'>
@@ -26,21 +25,20 @@
         </thead>
         <tbody>
          <tr *ngFor='let book of filteredBook'>
-            <td><img *ngIf = 'showImage' [src]='book.ImageUrl'
+            <td><img *ngIf = 'showImage && book.ImageUrl' [src]='book.ImageUrl'
                       [title]='book.ImageUrl'
                       [style.width.px]='imageWidth'
                       [style.margin.px]='imageMargin'>
-                    </td>
+              </td>
             <td><h5><a routerLink = "/product-desc/{{book._id}}"> {{ book.book_name}}</a></h5></td>
             <td>{{ book.author_name |lowercase }}</td>
             <td>{{ book.price | currency:"&#8377;": 'symbol' :'1.2-2' }}</td>
             <td>{{ book.starRating }}</td>
-            <td> <button class="btn btn-primary" (click)= addtocart(book)> Add to cart</button>  </td>
+            <td> <button class="btn btn-primary" (click)= addtocart(book)> Add to cart</button> </td>
+            <td> <button class="btn btn-primary" (click)= deleteBook(book)> Delete</button> </td>
         </tbody>
       </table>
     </div>
-
   </div>
-
 </div>
 

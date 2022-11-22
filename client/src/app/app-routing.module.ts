@@ -5,12 +5,14 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [ {path: 'home', component: HomepageComponent},
                           {path: 'product', component: BookComponent},
                           {path: 'product-desc/:id', component: BookDetailComponent},
                           {path: 'cart', component: CartComponent},
                           {path: 'add',component:AddBookComponent},
+                          {path: 'update/:id',component:UpdateComponent},
                           {path: '', component: HomepageComponent} ];
 
 @NgModule({

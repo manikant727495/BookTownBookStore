@@ -24,7 +24,10 @@ router.put('/books/update/:id',(req, res)=>{
             {_id: req.params.id},
             {$set:{ book_id:req.body.book_id,
                     book_name:req.body.book_name,
-                    author_name:req.body.author_name
+                    book_name:req.body.author_name,
+                    description:req.body.description,
+                    price:req.body.price,
+                    starRating:req.body.starRating
                 } }
         ).then((result)=>{
             res.status(200).json(result)
@@ -45,7 +48,6 @@ router.post('/book',(req, res, next)=>{
     newBook.save((err,book)=>{
         if(err)
         {
-
             res.json({err:'failed to add book'});
         }
         else{
@@ -53,6 +55,7 @@ router.post('/book',(req, res, next)=>{
         }
     });
   });
+
 //delete Book
 
 router.delete('/book/:id',(req, res, next)=>{
@@ -82,4 +85,4 @@ V   "_id": "616715465c379b00442f33dc",
         "ImageUrl": "assets/images/three.jpeg",
         "__v": 0
     },
-        */
+*/
