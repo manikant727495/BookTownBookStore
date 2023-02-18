@@ -1,0 +1,35 @@
+<div class="search-input-conatiner">
+    <input type = 'text' (focus)="onInputSearchFocus()" placeholder="search" class="search-input"
+    [(ngModel)]="searchedText"(keyup.enter)="openSearchResults(searchedText ? searchedText : '')"(ngModelChange)="setSearchVariables();this.searchedTextUpdate.next($event);">
+    <div class="dashboard-search-list-mock" *ngIf="isSearchListLoading">
+        <div class="mock-list-container">
+            <div *ngFor="let item of staticLoaderRows">
+                <div class="mock-list-static-loader"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-search-list-recent" *ngIf="isRecentSearchesEnabled && recentSearchedList && recentSearchedList.length > 0">
+        <div class="recent-list-container">
+            <div class="recent-list-header">
+                Recent Searches
+            </div>
+            <div *ngFor="let item of recentSearchedList">
+                <div class="recent-list-item " (click)="openSearchResults(item)">
+                    {{item}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-search-list-recent" *ngIf="isSearchTextResultsEnabled">
+        <div class="recent-list-container" *ngIf="searchedTextResults && searchedTextResults.length > 0">
+            <div *ngFor="let item of searchedTextResults" (click)="openSearchResults(item)">
+                <div class="recent-list-item">
+                    {{item}}
+                </div>
+            </div>
+        </div>
+        <div class="recent-list-container-no-results" *ngIf="!searchedTextResults || searchedTextResults.length === 0">
+            No Results found
+        </div>
+    </div>
+</div>

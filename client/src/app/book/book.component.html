@@ -30,7 +30,7 @@
                       [style.width.px]='imageWidth'
                       [style.margin.px]='imageMargin'>
               </td>
-            <td><h5><a routerLink = "/product-desc/{{book._id}}"> {{ book.book_name}}</a></h5></td>
+            <td><h5><a routerLink = "/product-desc/{{book._id}}"> {{book.book_name}}</a></h5></td>
             <td>{{ book.author_name |lowercase }}</td>
             <td>{{ book.price | currency:"&#8377;": 'symbol' :'1.2-2' }}</td>
             <td>{{ book.starRating }}</td>

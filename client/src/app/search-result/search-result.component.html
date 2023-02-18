@@ -1,0 +1,33 @@
+<div class="search-result">
+    <app-navbar></app-navbar>
+    <div class="search-results-main-section" *ngIf="isMainSectionEnabled">
+        <div *ngIf="!isSearchResultsLoading">
+            <div class="search-results-container-div">
+                <div itemSize="60"
+                class="search-results-container" #searchResultsElementRef
+                *ngIf="filteredSearchResults && filteredSearchResults.length > 0">
+                    <div class="search-results-item" *ngFor="let resultItem of filteredSearchResults; let i = index"
+                    (click)="openDetailsPage(resultItem)">
+                    <app-search-result-item [searchResultItem]="resultItem"
+                            [lastItem]="filteredSearchResults.length - 1 === i"></app-search-result-item>
+                    </div>
+                    <!-- <div class="search-results-next-loaders" *ngIf="isNextSearchResultsLoading">
+                        <div *ngFor="let item of staticLoaderRows" class="search-results-loader-item">
+                            <div class="card__name"></div>
+                            <div class="card__type"></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="search-results-container search-results-container-zero-state" *ngIf="!filteredSearchResults || filteredSearchResults.length < 1">
+            </div>
+        </div>
+        <!-- <div class="search-results-loaders" *ngIf="isSearchResultsLoading">
+            <div class="card__header"></div>
+            <div *ngFor="let item of staticLoaderRows" class="search-results-loader-item">
+                <div class="card__name"></div>
+                <div class="card__type"></div>
+            </div>
+        </div> -->
+    </div>
+</div>

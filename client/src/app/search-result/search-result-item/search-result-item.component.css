@@ -1,0 +1,60 @@
+.search-item-layout-last{
+    margin-bottom: 50px;
+}
+
+.search-item-layout{
+    width: 82%;
+    min-height: 50px;
+    border-bottom: 1px solid var(--header-background-color);
+    margin-top: 10px;
+    padding-left: 13px;
+    padding-right: 83px;
+    padding-top: 9px;
+    position: relative;
+}
+
+.search-item-heading{
+    width: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+    color: red;
+    font-size: 14px;
+}
+
+.search-item-description{
+    margin-bottom: 10px;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.search-item-description-label{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+    color:red;
+    font-size: 10px;
+    border-radius: 2px;
+    border: 1px dotted #71C5E8;
+    padding: 3px 1px 2px 3px;
+    margin-right: 6px;
+    position: absolute;
+    right: 4%;
+    top: 16px;
+}
+
+.search-item-description-text{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+    color: #999999;
+    font-size: 12px;
+}
+
+.search-item-description-video{
+    margin-bottom: 10px;
+}
+.search-item-icon{
+    position: absolute;
+    right: 0%;
+    top: 10px;
+}
+
+
