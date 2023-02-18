@@ -1,0 +1,92 @@
+.search-input-container{
+    position: relative;
+}
+.search-input{
+    outline: none;
+    height: 36px;
+    width: 800px;
+    border: 1px solid #CDD1DC;
+    border-radius: 6px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: #3E4456;
+    font-size: 15px;
+    padding-left: 11px;
+    margin-left: 75px;
+}
+
+.dashboard-search-list-recent{
+    z-index: 999;
+    position: absolute;
+    width: 790px;
+    margin-left: 80px;
+    padding-bottom: 5px;
+}
+
+.recent-list-container{
+    max-height: 240px;
+    overflow-x: hidden;
+    padding: 22px 26px 4px 26px;
+    background-color: white;
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.recent-list-item, .recent-list-header{
+    display: block;
+    margin-bottom: 14px;
+    width: 100%;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #787878;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.recent-list-header{
+    font-size: 15px !important;
+    font-weight: bold !important;
+    pointer-events: none !important;
+}
+
+.recent-list-container-no-results{
+    padding: 24px 26px 14px 26px;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    font-weight: bold;
+    color: #999999;
+    text-align: left;
+    font-size: 16px;
+}
+
+.dashboard-search-list-mock{
+    z-index: 999;
+    position: absolute;
+    width: 470px;
+    margin-left: 6px;
+    padding-bottom: 5px;
+}
+.mock-list-container{
+    padding: 24px 26px 4px 26px;
+    background-color: var(--main-background-primary);
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.mock-list-static-loader{
+    display: block;
+    height: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    background: linear-gradient(-90deg,
+    rgb(238, 238, 238) 0%,
+    rgb(210, 210, 210) 30%,
+    rgb(238, 238, 238) 50%,
+    rgb(238, 238, 238) 100%);
+    border-radius: 4px;
+    background-size: 400% 400%;
+    animation: pulse 1.2s linear infinite forwards;
+}
+

@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/Books');
+const fetchuser = require('../middleware/fetchuser');
 //retrieving data
 router.get('/books',(req, res, next)=>{
     Book.find(function(err,books){
         res.json(books);
     });
 });
-router.get('/books/:id',(req, res, next)=>{
+
+router.get('/books/:id',fetchuser,(req, res, next)=>{
     Book.findOne({_id:req.params.id},function(err,result){
         if(err)
         {
@@ -19,15 +21,17 @@ router.get('/books/:id',(req, res, next)=>{
         
     });
 });
-router.put('/books/update/:id',(req, res)=>{
+
+router.put('/update/:id',(req, res)=>{
         Book.updateOne(
             {_id: req.params.id},
             {$set:{ book_id:req.body.book_id,
                     book_name:req.body.book_name,
-                    book_name:req.body.author_name,
+                    author_name:req.body.author_name,
                     description:req.body.description,
                     price:req.body.price,
-                    starRating:req.body.starRating
+                    starRating:req.body.starRating,
+                    tag: req.body.tag
                 } }
         ).then((result)=>{
             res.status(200).json(result)
@@ -35,15 +39,15 @@ router.put('/books/update/:id',(req, res)=>{
 });
 
 //add Book
-router.post('/book',(req, res, next)=>{
+router.post('/addbook',(req, res, next)=>{
     let newBook = new Book({
-        book_id:req.body.book_id,
         book_name:req.body.book_name,
         author_name:req.body.author_name,
         price:req.body.price,
         description:req.body.description,
         starRating:req.body.starRating,
-        ImageUrl:req.body.ImageUrl
+        ImageUrl:req.body.ImageUrl,
+        tag: req.body.tag
     })
     newBook.save((err,book)=>{
         if(err)
@@ -57,9 +61,8 @@ router.post('/book',(req, res, next)=>{
   });
 
 //delete Book
-
-router.delete('/book/:id',(req, res, next)=>{
-    Book.remove({_id:req.params.id},function(err,result){
+router.delete('/deletebook/:id',(req, res, next)=>{
+    Book.deleteOne({_id:req.params.id},function(err,result){
         if(err)
         {
             res.json(err);
@@ -69,6 +72,36 @@ router.delete('/book/:id',(req, res, next)=>{
         }
         
     });
+});
+
+router.post('/autocomplete/',async (req, res, next)=>{
+    let searchedText = req.body.searchedText;
+    let regex = new RegExp(searchedText,'i');
+    let books = [];
+    let booktitle = await Book.find({book_name:regex});
+    let authorname = await Book.find({author_name:regex});
+    booktitle.forEach(element => {
+        books.push(element.book_name);
+    });
+    authorname.forEach(element => {
+        books.push(element.author_name);
+    });
+    res.json(books);
+});
+
+router.get('/search/:searchedText',async (req, res, next)=>{
+    let searchedText = req.params.searchedText;
+    let regex = new RegExp(searchedText,'i');
+    let books = [];
+    let booktitle = await Book.find({book_name:regex});
+    let tag = await Book.find({tag:regex});
+    // booktitle.forEach(element => {
+    //     books.push(element.book_name);
+    // });
+    // authorname.forEach(element => {
+    //     books.push(element.author_name);
+    // });
+    res.json(tag);
 });
 
 module.exports = router;

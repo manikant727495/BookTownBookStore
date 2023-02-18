@@ -23,8 +23,11 @@ const BookSchema = mongoose.Schema({
     },
     ImageUrl:{
         type:String
-    }
-
+    },
+    tag: {
+        type: Array,
+        "default" : []
+    },
 });
 
 const Book = module.exports = mongoose.model('book',BookSchema);

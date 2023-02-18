@@ -1,0 +1,13 @@
+<div class="search-item-layout" [ngClass]="{'search-item-layout-last': lastItem}">
+    <div class="search-item-heading">
+        {{searchResultItem.book_name}}
+    </div>
+    <div class="search-item-description">
+        <span class="search-item-description-label">
+            {{searchResultItem.author_name}}
+        </span>
+        <span class="search-item-description-text">
+            {{searchResultItem.description ? searchResultItem.description : '--'}}
+        </span>
+    </div>
+</div>
