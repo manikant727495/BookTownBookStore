@@ -3,11 +3,15 @@
         {{searchResultItem.book_name}}
     </div>
     <div class="search-item-description">
-        <span class="search-item-description-label">
+        <!-- <span class="search-item-description-label">
             {{searchResultItem.author_name}}
-        </span>
-        <span class="search-item-description-text">
-            {{searchResultItem.description ? searchResultItem.description : '--'}}
+        </span> -->
+        <span class="search-item-author-name">
+            <span>by </span>{{searchResultItem.author_name ? searchResultItem.author_name : '--'}}
         </span>
     </div>
+    <div class="search-item-description">
+        {{searchResultItem.starRating}} star
+    </div>
+
 </div>

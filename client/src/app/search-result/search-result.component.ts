@@ -23,6 +23,7 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.isSearchedText$.subscribe((data) => {
+      console.log(data);
       this.isSearchResultsLoading = true;
       this.searchedText = data;
       if (this.searchedText) {
