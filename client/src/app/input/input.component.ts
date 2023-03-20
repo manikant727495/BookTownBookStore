@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { SearchService } from '../services/search.service';
@@ -49,8 +49,15 @@ export class InputComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.router.url !== "/"){
+      this.searchService.isSearchedText$.subscribe((data) => {
+       this.searchedText = data;
+      })
+    }
+
     localStorage.setItem('recentSearches', JSON.stringify(this.selectedInput));
     this.getRecentSearches();
+    
   }
 
   
