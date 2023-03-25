@@ -77,31 +77,53 @@ router.delete('/deletebook/:id',(req, res, next)=>{
 router.post('/autocomplete/',async (req, res, next)=>{
     let searchedText = req.body.searchedText;
     let regex = new RegExp(searchedText,'i');
-    let books = [];
-    let booktitle = await Book.find({book_name:regex});
-    let authorname = await Book.find({author_name:regex});
-    booktitle.forEach(element => {
-        books.push(element.book_name);
+    let autocompleteTags = [];
+    let findBoooName = await Book.find({book_name:regex});
+    let findAuthorName = await Book.find({author_name:regex});
+    let findTags = await Book.find({tag:regex});
+
+    findBoooName.forEach(element => {
+        autocompleteTags.push(element.book_name);
     });
-    authorname.forEach(element => {
-        books.push(element.author_name);
+
+    findAuthorName.forEach(element => {
+        if(!autocompleteTags.includes(element.author_name)){
+            autocompleteTags.push(element.book_name);
+        }
     });
-    res.json(books);
+    findTags.forEach(element => {
+        element.tag.forEach(ele=>{
+            if(regex.test(ele)){
+                if(!autocompleteTags.includes(ele)){
+                    autocompleteTags.push(ele);
+                }
+            }
+        })
+    });
+    res.json(autocompleteTags);
 });
 
 router.get('/search/:searchedText',async (req, res, next)=>{
     let searchedText = req.params.searchedText;
     let regex = new RegExp(searchedText,'i');
-    let books = [];
-    let booktitle = await Book.find({book_name:regex});
-    let tag = await Book.find({tag:regex});
-    // booktitle.forEach(element => {
-    //     books.push(element.book_name);
-    // });
-    // authorname.forEach(element => {
-    //     books.push(element.author_name);
-    // });
-    res.json(tag);
+    let searchedResults = [];
+    let findBooksByTitle = await Book.find({book_name:regex});
+    let findBooksByAuthorName = await Book.find({author_name:regex});
+    let findBooksByTag = await Book.find({tag:regex});
+    findBooksByTitle.forEach(element => {
+        searchedResults.push(element);
+    });
+    findBooksByAuthorName.forEach(element => {
+        if(!searchedResults.includes(element)){
+            searchedResults.push(element);
+        }
+    });
+    findBooksByTag.forEach(element => {
+        if(!searchedResults.includes(element)){
+            searchedResults.push(element);
+        }
+    });
+    res.json(searchedResults);
 });
 
 module.exports = router;

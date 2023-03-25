@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -10,7 +11,7 @@ export class SearchResultComponent implements OnInit {
 
   isSearchResultsLoading = true;
   isNextSearchResultsLoading = false;
-  searchedText = '';
+  searchedText :any;
   isMainSectionEnabled = false;
   searchResults = [];
   totalSearchResultsAvailable = 0;
@@ -19,13 +20,19 @@ export class SearchResultComponent implements OnInit {
   numberOfSearchResutlsToFetchAtOnce = 50;
   filteredSearchResults = [] as any;
   numberOfSearchResults = 0;
-  constructor(private searchService: SearchService) { }
+  constructor(
+    private searchService: SearchService,
+    private route:ActivatedRoute
+              
+  ) {}
 
   ngOnInit(): void {
-    this.searchService.isSearchedText$.subscribe((data) => {
-      console.log(data);
-      this.isSearchResultsLoading = true;
-      this.searchedText = data;
+      // console.log(data);
+      this.route.paramMap.subscribe(params => {
+        this.searchedText = params.get("searchedText");
+        this.isSearchResultsLoading = true;
+        this.searchService.setSearchedText(this.searchedText);
+      // this.searchedText = data;
       if (this.searchedText) {
         this.isMainSectionEnabled = true;
         this.searchResults = [];
@@ -36,7 +43,7 @@ export class SearchResultComponent implements OnInit {
         this.isSearchResultsLoading = false;
         this.isMainSectionEnabled = false;
       }
-    }); 
+      });
   }
 
   getSearchResultsList() {
