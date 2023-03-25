@@ -1,17 +1,35 @@
 <div class="search-item-layout" [ngClass]="{'search-item-layout-last': lastItem}">
-    <div class="search-item-heading">
-        {{searchResultItem.book_name}}
+    <div class="search-item-inner-layout">
+        <div class="search-item-image-layout">
+            <div class="search-item-image-inner-layout" *ngIf="searchResultItem.ImageUrl">
+                <img [src]= searchResultItem.ImageUrl class="book-image"/>
+            </div>
+        </div>
+        <div class="search-item-label">
+            <div class="search-item-description search-item-heading">
+                {{searchResultItem.book_name}}
+            </div>
+            <div class="search-item-description">
+                <span class="search-item-author-name">
+                    <span>by </span>
+                    <span class="author-name">{{searchResultItem.author_name ? searchResultItem.author_name : '--'}}</span>
+                </span>
+            </div>
+            <div class="search-item-description">
+                <span class="star-rating">{{searchResultItem.starRating}} </span>
+                <img src="assets/images/star.svg" class="star-image"/>
+            </div>
+            <div class="search-item-description">
+                <span class="price-symbol">&#8377;</span>
+                 <span class="search-item-price">{{searchResultItem.price}} </span>
+            </div>
+            <div class="search-item-description">
+                <span class="free-delivery-text">Free Delivery</span>
+            </div>
+            <div class="search-item-description">
+                <img src="assets/images/verified-icon.png" alt="verified" class="verified-icon-image"/>
+                <span class="verified-text">Verified</span>
+            </div>
+        </div>
     </div>
-    <div class="search-item-description">
-        <!-- <span class="search-item-description-label">
-            {{searchResultItem.author_name}}
-        </span> -->
-        <span class="search-item-author-name">
-            <span>by </span>{{searchResultItem.author_name ? searchResultItem.author_name : '--'}}
-        </span>
-    </div>
-    <div class="search-item-description">
-        {{searchResultItem.starRating}} star
-    </div>
-
 </div>

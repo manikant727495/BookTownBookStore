@@ -76,11 +76,17 @@ export class InputComponent implements OnInit {
     }
   }
 
+  onInputSearchFocusOut() {
+    this.isRecentSearchesEnabled = false;
+    this.isSearchListLoading = false;
+    this.isSearchTextResultsEnabled = false;
+  }
+
   openSearchResults(searchedItem: string){
     this.searchService.setSearchedText(searchedItem);
     this.searchService.setRecentSearches(searchedItem);
-    this.getRecentSearches();
-    this.router.navigateByUrl('/search-results');
+    this.onInputSearchFocusOut();
+    this.router.navigateByUrl('/search-results/'+searchedItem);
     this.getRecentSearches();
   }
 

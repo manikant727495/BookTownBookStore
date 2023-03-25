@@ -3,17 +3,50 @@
 }
 
 .search-item-layout{
-    width: 82%;
+    margin-left: 4px;
     min-height: 50px;
-    border-bottom: 1px solid var(--header-background-color);
     margin-top: 10px;
-    padding-left: 13px;
-    padding-right: 83px;
-    padding-top: 9px;
     position: relative;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0px 2px #f9f9f9;
+}
+
+.search-item-image-layout{
+    width: 17%;
+    height: 250px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.search-item-inner-layout{
+    display: flex;
+}
+
+.search-item-image-inner-layout{
+    height:218px;
+    margin-top: 15px;
+}
+
+
+.book-image{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.search-item-description{
+    margin-left:10px;
+    margin-bottom: 10px;
+    line-height: 1;
+    margin-top: 2px;
 }
 
 .search-item-heading{
+    margin-top: 10px;
     width: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: normal;
@@ -21,11 +54,6 @@
     font-size: 24px;
 }
 
-.search-item-description{
-    margin-bottom: 10px;
-    line-height: 1;
-    margin-top: 2px;
-}
 
 /* .search-item-description-label{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -47,10 +75,52 @@
     color: #999999;
     font-size: 13px;
 }
-
-.search-item-description-video{
-    margin-bottom: 10px;
+.author-name{
+    color: #d41c1c;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 500;
 }
+.price-symbol{
+    position: relative;
+    top: -9px;
+    font-weight: 500;
+}
+.search-item-price{
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.star-image{
+    width: 20px;
+    margin-top: -10px;
+}
+
+.star-rating{
+    font-size: 20px;
+}
+.free-delivery-text{
+    font-weight: 500;
+    font-family: ui-sans-serif;
+}
+
+.verified-text{
+    font-weight: 500;
+    color: #919b87;
+    font-style: italic;
+}
+
+.verified-icon-image{
+    height: 17px;
+    margin-bottom: 3px;
+
+}
+.search-item-description-video{
+    position: relative;
+    top: -9px;
+    font-weight: 300;
+}
+
 .search-item-icon{
     position: absolute;
     right: 0%;
